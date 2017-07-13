@@ -1,0 +1,50 @@
+/*
+Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+
+Try solving it using constant additional space.
+*/
+
+public class Solution {
+	public ListNode detectCycle(ListNode a) {
+	   // System.out.println(a);
+	    ListNode temp1 = a;
+	    if(a==null){
+	        return a;
+	    }
+	    ListNode temp2 = a;
+	    ListNode head = a;
+	    boolean isCycle = false;
+	    while(temp1!=null && temp2!=null && temp2.next!=null){
+	        
+	        temp1 = temp1.next;
+	        temp2 = temp2.next.next;
+	        if(temp1 == temp2){
+	            isCycle = true;
+	           // System.out.println(temp1.val + " " + temp2.val);
+	            break;
+	        }
+	    }
+	    if(isCycle == false){
+	        return null;
+	    }
+	    ListNode ptr = temp1;
+	    int k=1;
+	    while(ptr.next != temp1){
+	        ptr = ptr.next;
+	        k++;
+	    }
+	    ptr = head;
+	    for(int i=0; i<k; i++){
+	        ptr = ptr.next;
+	    }
+	    while(true){
+	        if(ptr == head){
+	            return ptr;
+	        }else{
+	            ptr = ptr.next;
+	            head = head.next;
+	        }
+	    }
+	   // return a;
+	}
+}
