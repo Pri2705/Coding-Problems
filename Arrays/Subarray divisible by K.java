@@ -47,6 +47,7 @@ class GFG {
 		    int sum=0;
 		    for(int i=0; i<n; i++){
 		        sum+=a[i];
+			//taking double mod as the sum can be negative
 		        temp[((sum%k)+k)%k]++;
 		    }
 		    int count = 0;
@@ -55,6 +56,7 @@ class GFG {
 		            count += ((temp[i])*(temp[i]-1))/2;
 		        }
 		    }
+	  	    //Adding the element divisible by k
 		    count+=temp[0];
 		    System.out.println(count);
 		}
